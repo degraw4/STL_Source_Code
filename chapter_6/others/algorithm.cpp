@@ -43,7 +43,7 @@ count(InputIterator first, InputIterator last, const T& x){
 }
 
 template<class _FI1, class _FI2>
-_FI1 search(_FI1 first1, _FI1 last1, _FI2 first2, _FI2 last2){  // search的简介模板
+_FI1 search(_FI1 first1, _FI1 last1, _FI2 first2, _FI2 last2){  // search的简洁模板
     int d1 = last1 - first1;
     int d2 = last2 - first2;
     if(d1 < d2) return last1;
@@ -69,16 +69,16 @@ template<class _FI, class T>
 _FI search_n(_FI first, _FI last, int count, const T& x){
     if(count < 0)   return first;
     first = find(first, last, x);
-    while(first != last){
+    while(first != last){   // first是每次搜索的起点
         int n = count - 1;
         _FI i = first;
-        ++i;
+        ++i;   // i是起点后面搜寻的位置
         while(n > 0 && i != last && *i == x){
             --n;
             ++i;
         }
         if(!n)  return first;
-        else first = find(first, last, x);  
+        else first = find(i, last, x);      // 从i开始继续搜寻
     }
     return last;
 }
@@ -198,12 +198,13 @@ void rotate(_FI first, _FI middle, _FI last){
     while(true){
         iter_swap(first, i);
         ++first;
+        ++i;
         if(first == middle){
             if(i == last)   return;
             middle = i;
         }
-        else if(i == last)  return;
-        i = middle;
+        else if(i == last)
+            i = middle;
     }
 }
 
