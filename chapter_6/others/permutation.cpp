@@ -28,7 +28,7 @@ bool _next_permutation(_BI first, _BI last){
         --i;
         if(*i < *ii){
             _BI j = last;
-            while(!(*i < *--j));
+            while(!(*i < *--j));    // 前置--，可以保证跳出循环的就是不满足循环条件的
             iter_swap(i, j);
             reverse(ii, last);
             return true;

@@ -15,7 +15,7 @@
 
 using namespace std;
 
-// 没有一开始直接用lower和upper，而是先找出来前后两个区间，在两个区间分别upper和lower
+// 没有一开始直接用lower和upper，而是先找出来相等的元素，分出来前后两个区间，在两个区间分别upper和lower
 // 防止直接lower和upper在重复区域重复计算
 template<class _RI, class T>
 pair<_RI, _RI> equal_range(_RI first, _RI last, const T& x){
